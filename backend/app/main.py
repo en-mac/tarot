@@ -1,9 +1,15 @@
 from fastapi import FastAPI
-from .routes import auth, cards, history, about
+from fastapi.middleware.cors import CORSMiddleware
+from .routes import cards
 
 app = FastAPI()
 
-app.include_router(auth.router)
-app.include_router(cards.router)
-app.include_router(history.router)
-app.include_router(about.router)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust this for specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(cards.router, prefix="/api")
