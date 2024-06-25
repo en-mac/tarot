@@ -1,26 +1,57 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './components/About';
 import DrawCard from './components/DrawCard';
 import FortuneHistory from './components/FortuneHistory';
-import Login from './components/Login';
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
 function App() {
-  console.log('App component rendered');
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/draw_card" element={<DrawCard />} />
-        <Route path="/fortune_history" element={<FortuneHistory />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </>
+    <Router>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/draw_card"
+            element={
+              <ProtectedRoute>
+                <DrawCard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/fortune_history"
+            element={
+              <ProtectedRoute>
+                <FortuneHistory />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 

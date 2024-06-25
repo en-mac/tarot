@@ -4,10 +4,21 @@ const FortuneHistory = () => {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    // Fetch the history from the backend API
-    fetch('/api/fortune_history')
-      .then(response => response.json())
-      .then(data => setHistory(data.history));
+    const fetchHistory = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/fortune_history'); // Ensure this is the correct URL
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched data:', data); // Log the fetched data
+        setHistory(data.history);
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    };
+
+    fetchHistory();
   }, []);
 
   return (
@@ -24,7 +35,7 @@ const FortuneHistory = () => {
         <tbody>
           {history.map((item, index) => (
             <tr key={index}>
-              <td>{item.timestamp}</td>
+              <td>{new Date(item.timestamp).toLocaleString()}</td>
               <td>{item.card_name}</td>
               <td>{item.fortune_text}</td>
             </tr>
