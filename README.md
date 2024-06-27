@@ -1,41 +1,50 @@
-# This is a tarot card app. 
+# Tarot Card App
+
 ## Accessing the Application
-http://52.250.34.14/login
-### Username: user
-### Password: pass
+- URL: http://52.250.34.14/login
+- Username: user
+- Password: pass
 
-# Azure Setup
-## Create a Resource Group
-## Create an Azure Kubernetes Service (AKS) Cluster
-## Connect to the AKS Cluster
+## Azure Setup
 
-# Container Registry Setup
-## Create an Azure Container Registry
-## Log in to the Azure Container Registry
-## Build and Push Docker Images
-### Ensure you have your Dockerfile for both the frontend and backend services. Navigate to the directory containing your Dockerfile  and build the Docker images.
-## Push the Docker images to Azure Container Registry.
+1. Create a Resource Group
+2. Create an Azure Kubernetes Service (AKS) Cluster
+3. Connect to the AKS Cluster
 
-# Kubernetes Deployment
-## Create Kubernetes Secrets for PostgreSQL
-## Apply Kubernetes Manifests
-### Create a deployment.yaml file with the necessary configurations for your deployments and services. Then apply the configurations.
-## Verify Deployments and Services
-### Check the status of your pods and services to ensure everything is running correctly.
+## Container Registry Setup
 
-# Application Configuration
-## Update Frontend Configuration
-### Ensure the frontend application is pointing to the correct backend service URL. Update the URL in your React components (e.g., DrawCard.jsx, FortuneHistory.jsx) to point to the backend-service external IP.
-## Deploy Frontend Updates
-### Rebuild the frontend Docker image and push it to the Azure Container Registry.
-### Apply the updated frontend deployment.
+1. Create an Azure Container Registry
+2. Log in to the Azure Container Registry
+3. Build and Push Docker Images
+   - Ensure you have your Dockerfile for both the frontend and backend services
+   - Navigate to the directory containing your Dockerfile and build the Docker images
+4. Push the Docker images to Azure Container Registry
 
-# Monitoring and Maintenance
-## Monitor Your Cluster
-### Use Azure Monitor and the Kubernetes dashboard to keep an eye on your deployments, pods, and services.
+## Kubernetes Deployment
 
+1. Create Kubernetes Secrets for PostgreSQL
+2. Apply Kubernetes Manifests
+   - Create a `deployment.yaml` file with the necessary configurations for your deployments and services
+   - Apply the configurations
+3. Verify Deployments and Services
+   - Check the status of your pods and services to ensure everything is running correctly
 
+## Application Configuration
 
-# local (old)
-# docker-compose down
-# docker-compose up --build
+1. Update Frontend Configuration
+   - Ensure the frontend application is pointing to the correct backend service URL
+   - Update the URL in your React components (e.g., `DrawCard.jsx`, `FortuneHistory.jsx`) to point to the backend-service external IP
+2. Deploy Frontend Updates
+   - Rebuild the frontend Docker image and push it to the Azure Container Registry
+   - Apply the updated frontend deployment
+
+## Monitoring and Maintenance
+
+- Monitor Your Cluster
+  - Use Azure Monitor and the Kubernetes dashboard to keep an eye on your deployments, pods, and services
+
+## Local Development (Old)
+
+```bash
+docker-compose down
+docker-compose up --build
