@@ -5,7 +5,7 @@ const DrawCard = () => {
 
   const handleDraw = () => {
     console.log('Button clicked, making API call...');
-    fetch('http://localhost:8000/api/draw_card')
+    fetch('http://172.179.16.48:8000/api/draw_card')  // Replace with your backend external IP
       .then(response => {
         console.log('Response received:', response);
         if (!response.ok) {

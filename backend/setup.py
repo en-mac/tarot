@@ -8,9 +8,9 @@ from urllib.parse import urlparse, urlunparse
 load_dotenv()
 
 def create_database():
-    db_url = os.getenv("DATABASE_URL")
+    db_url = os.getenv("DB_URL")
     if not db_url:
-        raise ValueError("DATABASE_URL environment variable is not set")
+        raise ValueError("DB_URL environment variable is not set")
 
     parsed_url = urlparse(db_url)
     db_name = parsed_url.path[1:]

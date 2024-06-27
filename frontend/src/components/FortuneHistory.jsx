@@ -6,13 +6,13 @@ const FortuneHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/fortune_history'); // Ensure this is the correct URL
+        const response = await fetch('http://172.179.16.48:8000/api/fortune_history'); // Ensure this is the correct URL
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         console.log('Fetched data:', data); // Log the fetched data
-        setHistory(data.history);
+        setHistory(data.history); // Update this line to use data.history
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
       }
