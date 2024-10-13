@@ -4,9 +4,19 @@
 # Default: True
 gitignore-import-and-ignore: True
 
-# Ignore files and directories for tree and "Contents of ..." sections
+# Ignore files and directories for tree and content sections
 ignore-tree-and-content:
-  - "node_modules/"
-  - "vendor/"
   - ".git/"
+  - "node_modules/"
   - "__pycache__/"
+  - "*.lock"
+  - "*.yaml"
+  - "*.md"
+  - "frontend/public/"
+  - "*.png"
+  - "*.ico"
+  - "*.json"
+  - "README.md"
+  - "frontend/src/logo.svg"
+  - "frontend/src/setupTests.js"
+  - "frontend/src/App.test.js"
